@@ -1,8 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import React, { Component } from 'react';
-import Welcome from './components/search-bar/searchBar';
+import SearchBar from './components/search-bar/searchBar';
+import SearchBar2 from './components/search-bar/searchBar2';
 
 const https = require('https');
 const httpsAgent = new https.Agent({ rejectUnauthorized: false });
@@ -13,14 +15,15 @@ class App extends Component {
     this.state = { isLoded: false, dbRes: null };
   }
   componentDidMount() {
-    fetch('/fetchAll', { agent: httpsAgent })
-    .then(res => res.json())
-    .then(result => {
-      this.setState({
-        isLoaded: true,
-        dbRes: result
-      });
-    });
+    // fetch('/fetchAll', { agent: httpsAgent })
+    // .then(res => res.json())
+    // .then(result => {
+    //   this.setState({
+    //     isLoaded: true,
+    //     dbRes: result
+    //   });
+    // });
+    this.setState( { isLoaded: true, dbRes: [] } );
   }
   
   render() {
@@ -28,27 +31,10 @@ class App extends Component {
     const { isLoaded } = this.state;
     if ( isLoaded ){
       return (
-        <div className="App" id="test">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-          </header>
-          <body>
-            <Welcome name="Kaleb"/>
-            <p>This is an example of a simple HTML page with one paragraph.</p>
-            <p>{JSON.stringify(dbRes)}</p>
-        </body>
-        </div>
+        <Router>
+          <Route path="/" exact component={SearchBar} />
+          <Route path="/test" exact component={SearchBar2} />
+        </Router>
       );
     } else {
       return (<h3>is loading</h3>);

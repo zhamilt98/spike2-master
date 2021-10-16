@@ -10,8 +10,8 @@ class Db {
     var con = mysql.createConnection({
       host     : 'localhost',
       user     : 'root',
-      password : 'Zboy1301', // password 
-      database : 'ssdi_db' // mydb
+      password : 'password', // password 
+      database : 'mydb' // mydb
     });
     
     con.connect(function(err) {
@@ -45,8 +45,8 @@ class Db {
     var con = mysql.createConnection({
       host     : 'localhost',
       user     : 'root',
-      password : 'Zboy1301', // password
-      database : 'ssdi_db' // mydb
+      password : 'password', // password
+      database : 'mydb' // mydb
     });
 
     return new Promise( function( resolve, reject ){
