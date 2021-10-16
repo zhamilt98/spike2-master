@@ -18,25 +18,7 @@ class Db {
       if (err) throw err;
       console.log("Connected!");
     
-      con.query(`DROP TABLE IF EXISTS myTable`, function (err, result) {
-        if (err) throw err;
-        console.log("Table dropped");
-      });
-
-      con.query("CREATE TABLE myTable ( Name varchar(45), Age int )", function (err, result) {
-        if (err) throw err;
-        console.log("Table created");
-      });
-    
-      con.query(`INSERT INTO myTable VALUES ( 'Kaleb', 23 )`, function (err, result) {
-        if (err) throw err;
-        console.log("First row added");
-      });
-    
-      con.query(`INSERT INTO myTable VALUES ( 'Chelsea', 22 )`, function (err, result) {
-        if (err) throw err;
-        console.log("Second row added");
-      }); 
+      
     });
   }
   
