@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import React, { Component } from 'react';
+import Welcome from './components/search-bar/searchBar';
 
 const https = require('https');
 const httpsAgent = new https.Agent({ rejectUnauthorized: false });
@@ -43,6 +44,7 @@ class App extends Component {
             </a>
           </header>
           <body>
+            <Welcome name="Kaleb"/>
             <p>This is an example of a simple HTML page with one paragraph.</p>
             <p>{JSON.stringify(dbRes)}</p>
         </body>
