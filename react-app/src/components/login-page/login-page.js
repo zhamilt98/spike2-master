@@ -1,5 +1,5 @@
 import React from 'react';
-import './searchBar.css';
+import '../search-bar/searchBar.css';
 class SearchBar2 extends React.Component {
   render() {
     // return <h1>Hello, {this.props.name}</h1>;
@@ -11,11 +11,7 @@ class SearchBar2 extends React.Component {
         </header>
         <body>
           <div className="search_container">
-            <form>
-                <label className="search_title">SEARCH BAR 2</label>
-                <input className="search_title" type="text"></input>
-                <input type="submit"></input>
-            </form>
+            <h1>LOGIN PAGE</h1>
           </div>
         </body>
       </div>

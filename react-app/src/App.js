@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import React, { Component } from 'react';
 import SearchBar from './components/search-bar/searchBar';
-import SearchBar2 from './components/search-bar/searchBar2';
+import loginPage from './components/login-page/login-page';
 
 const https = require('https');
 const httpsAgent = new https.Agent({ rejectUnauthorized: false });
@@ -33,7 +33,7 @@ class App extends Component {
       return (
         <Router>
           <Route path="/" exact component={SearchBar} />
-          <Route path="/test" exact component={SearchBar2} />
+          <Route path="/login" exact component={loginPage} />
         </Router>
       );
     } else {
