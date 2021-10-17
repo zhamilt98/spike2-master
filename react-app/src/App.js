@@ -43,6 +43,7 @@ class App extends Component {
             <Route path="/login" exact component={LoginPage} />
             <Route path="/hamburger" exact component={Hamburger} />
             <Route path="/signup" exact component={SignUp} />
+            <Route path="/profile" exact component={Profile} />
           </Router>
         </div>
         
