@@ -33,8 +33,10 @@ router.get('/fetchAll', async (ctx, next) => {
 	}
 });
 
-router.post('/search', async (ctx, next) => {
-	ctx.body = 200;
+router.get('/search', async (ctx, next) => {
+	const search_route = require('../routes/search-route');
+
+	ctx.body = await search_route(ctx);
 	console.log('made post');
 });
 

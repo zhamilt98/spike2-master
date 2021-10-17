@@ -43,17 +43,19 @@ class SearchBar extends React.Component {
 
     // TO DO: fix this funciton by adding another separate function to make the API call then we can use the isLoading flag to get the values / rerender 
     async handleSearch( event ) {
+        const groceryList = this.state.groceries;
         event.preventDefault();
         this.setState( { isLoaded: false, value: 'test search', groceries: [], dbRes: [] } );
-        await this.getRecipes();
+        await this.getRecipes( groceryList );
     }
 
-    async getRecipes(  ) {
+    async getRecipes( ingredients ) {
         let resp;
         const https = require('https');
         const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 
-        await fetch('/fetchAll', { agent: httpsAgent })
+
+        await fetch(`/search?list=${JSON.stringify( ingredients )}`, { agent: httpsAgent })
         .then(res => res.json())
         .then(result => {
             resp = result; 

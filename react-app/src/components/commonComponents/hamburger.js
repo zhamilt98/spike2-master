@@ -1,6 +1,6 @@
 import React from 'react';
 import './hamburger.css';
-class hamburger extends React.Component {
+class Hamburger extends React.Component {
     render() {
         // return <h1>Hello, {this.props.name}</h1>;
         const Burger = () => {
@@ -37,4 +37,4 @@ class hamburger extends React.Component {
     }
 }
 
-export default hamburger;
+export default Hamburger;

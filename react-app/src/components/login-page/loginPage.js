@@ -1,6 +1,7 @@
 import React from 'react';
 import './loginPage.css'
-class loginPage extends React.Component {
+import Form from 'react-bootstrap/Form';
+class LoginPage extends React.Component {
   render() {
     return (
       <div>
@@ -22,4 +23,4 @@ class loginPage extends React.Component {
        
 }
 
-export default loginPage;
+export default LoginPage;

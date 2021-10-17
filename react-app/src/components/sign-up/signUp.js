@@ -1,7 +1,7 @@
 import React from 'react';
 import './signUp.css';
 import Form from 'react-bootstrap/Form';
-class signUp extends React.Component {
+class SignUp extends React.Component {
   render() {
     return (
       
@@ -27,4 +27,4 @@ class signUp extends React.Component {
        
 }
 
-export default signUp;
+export default SignUp;

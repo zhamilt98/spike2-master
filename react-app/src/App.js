@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import React, { Component } from 'react';
 import SearchBar from './components/search-bar/searchBar';
-import loginPage from './components/login-page/loginPage';
-import hamburger from './components/commonComponents/hamburger';
-import signUp from './components/sign-up/signUp'
+import LoginPage from './components/login-page/loginPage';
+import Hamburger from './components/commonComponents/hamburger';
+import SignUp from './components/sign-up/signUp'
 
 const https = require('https');
 const httpsAgent = new https.Agent({ rejectUnauthorized: false });
@@ -33,12 +33,16 @@ class App extends Component {
     const { isLoaded } = this.state;
     if ( isLoaded ){
       return (
-        <Router>
-          <Route path="/" exact component={SearchBar} />
-          <Route path="/login" exact component={loginPage} />
-          <Route path="/hamburger" exact component={hamburger} />
-          <Route path="/signup" exact component={signUp} />
-        </Router>
+        <div>
+          <Hamburger />
+          <Router>
+            <Route path="/" exact component={SearchBar} />
+            <Route path="/login" exact component={LoginPage} />
+            <Route path="/hamburger" exact component={Hamburger} />
+            <Route path="/signup" exact component={SignUp} />
+          </Router>
+        </div>
+        
       );
     } else {
       return (<h3>is loading</h3>);
