@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "my-packages": "cd react-app && npm i && cd .. && npm i",
     "my-test": "cd react-app && npm run build && cd .. && npm run dev",
     "test": "mocha",
     "dev": "nodemon app"
