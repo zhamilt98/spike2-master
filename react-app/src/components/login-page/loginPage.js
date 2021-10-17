@@ -4,19 +4,20 @@ import Form from 'react-bootstrap/Form';
 class LoginPage extends React.Component {
   render() {
     return (
-          <form>
+      <div>
+          <form action="/api/login" method="post" class="loginform">
             <h3>Log in</h3>
            
                 <label>Username</label>
-                <input type="text" placeholder="Enter username" />
+                <input type="text" placeholder="Enter username" className="logininput" id="username"/>
  
                 <label>Password</label>
-                <input type="text" placeholder="Enter password" />
+                <input type="text" placeholder="Enter password" className="logininput" id="password"/>
 
-            <button type="submit">Sign in</button> 
-            <button type="submit">Sign Up</button> 
+            <button type="submit" class="loginbutton">Log in</button>
+           
             </form>
-      
+        </div>
     );
   }
        

@@ -1,6 +1,6 @@
 
-  
-input[type=text] {
+
+.logininput {
     width: 100%;
     text-align: center;
     margin-left: auto;
@@ -9,6 +9,28 @@ input[type=text] {
 
 }
 
+.loginform {
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-rows: 1fr .5fr .5fr .5fr .5fr  .75fr;
+
+}
+
+.loginbutton{
+  background-color: black;
+  color:white;
+  margin: 5px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  
+
+}
+/*
 form {
   text-align: center;
   position: fixed;
@@ -31,3 +53,4 @@ button{
   margin-left: auto;
   margin-right: auto;
 }
+*/
