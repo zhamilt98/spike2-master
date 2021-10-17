@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import React, { Component } from 'react';
 import SearchBar from './components/search-bar/searchBar';
 import loginPage from './components/login-page/login-page';
+import hamburger from './components/commonComponents/hamburger';
 
 const https = require('https');
 const httpsAgent = new https.Agent({ rejectUnauthorized: false });
@@ -34,6 +35,7 @@ class App extends Component {
         <Router>
           <Route path="/" exact component={SearchBar} />
           <Route path="/login" exact component={loginPage} />
+          <Route path="/hamburger" exact component={hamburger} />
         </Router>
       );
     } else {
