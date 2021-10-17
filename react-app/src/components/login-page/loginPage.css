@@ -1,6 +1,6 @@
 
   
-  input[type=text] {
+  .logininput {
       width: 100%;
       text-align: center;
       margin-left: auto;
@@ -9,21 +9,18 @@
 
   }
 
-  form {
+  .loginform {
     text-align: center;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: grid;
-    grid-template-rows: 1fr .5fr .5fr .5fr .5fr .75fr .75fr;
+    grid-template-rows: 1fr .5fr .5fr .5fr .5fr  .75fr;
 
   }
-  button:hover{
-    background-color: white;
-    color:black;
-  }
- button{
+  
+ .loginbutton{
     background-color: black;
     color:white;
     margin: 5px;
