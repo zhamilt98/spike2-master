@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.23.0",
     "bootstrap": "^5.1.1",
     "chai": "^4.3.4",
     "koa": "^2.13.1",

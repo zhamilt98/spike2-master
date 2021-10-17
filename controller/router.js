@@ -33,8 +33,10 @@ router.get('/fetchAll', async (ctx, next) => {
 	}
 });
 
-router.post('/search', async (ctx, next) => {
-	ctx.body = 200;
+router.get('/search', async (ctx, next) => {
+	const search_route = require('../routes/search-route');
+
+	ctx.body = await search_route(ctx);
 	console.log('made post');
 });
 
@@ -43,6 +45,24 @@ router.get('/(.*)', async (ctx, next) => {
 		await send(ctx, './react-app/build/index.html');
 	} catch(err) {
 		console.log('error in / route');
+		return next();
+	}
+});
+
+router.post('/api/signup', async (ctx, next) => {
+	try {
+		console.log('made post');
+	} catch(err) {
+		console.log('error in signup');
+		return next();
+	}
+});
+
+router.post('/api/login', async (ctx, next) => {
+	try {
+		console.log(ctx);
+	} catch(err) {
+		console.log('error in login');
 		return next();
 	}
 });
