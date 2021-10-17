@@ -20,12 +20,12 @@ class Hamburger extends React.Component {
         }
 
         const Menu = () => (
-            <div id="results" className="search-results">
-                <button>Home</button><br></br>
-                <button>Login</button><br></br>
-                <button>Sign Up</button><br></br>
-                <button>Profile</button><br></br>
-                <button>Log Out</button><br></br>
+            <div id="results" className="menu">
+                <a href="/"><button>Home</button></a><br></br>
+                <a href="/login"><button >Login</button></a><br></br>
+                <a href="/signup"> <button>Sign Up</button></a><br></br>
+                <a href="/profile"><button>Profile</button></a><br></br>
+                <a href="/"><button> Log Out</button></a><br></br>
             </div>
         )
 

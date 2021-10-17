@@ -5,8 +5,10 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import React, { Component } from 'react';
 import SearchBar from './components/search-bar/searchBar';
 import LoginPage from './components/login-page/loginPage';
+
+import SignUp from './components/sign-up/signUp';
+import Profile from './components/profile/profile';
 import Hamburger from './components/commonComponents/hamburger';
-import SignUp from './components/sign-up/signUp'
 
 const https = require('https');
 const httpsAgent = new https.Agent({ rejectUnauthorized: false });
@@ -17,7 +19,7 @@ class App extends Component {
     this.state = { isLoded: false, dbRes: null };
   }
   componentDidMount() {
-    fetch('/fetchAll', { agent: httpsAgent })
+   fetch('/fetchAll', { agent: httpsAgent })
     .then(res => res.json())
     .then(result => {
       this.setState({
@@ -34,6 +36,7 @@ class App extends Component {
     if ( isLoaded ){
       return (
         <div>
+
           <Hamburger />
           <Router>
             <Route path="/" exact component={SearchBar} />
@@ -43,6 +46,7 @@ class App extends Component {
           </Router>
         </div>
         
+
       );
     } else {
       return (<h3>is loading</h3>);

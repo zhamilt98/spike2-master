@@ -1,6 +1,7 @@
 import React from 'react';
 import './loginPage.css'
 import Form from 'react-bootstrap/Form';
+
 class LoginPage extends React.Component {
   render() {
     return (
