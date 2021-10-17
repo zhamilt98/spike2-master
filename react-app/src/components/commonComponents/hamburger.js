@@ -10,9 +10,9 @@ class Hamburger extends React.Component {
                 <div>
                     <label for="check" id="toggle" onClick={onClick}>
                         <input type="checkbox" id="check" />
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
                     </label>
                     {showResults ? <Menu /> : null}
                 </div>
@@ -21,11 +21,11 @@ class Hamburger extends React.Component {
 
         const Menu = () => (
             <div id="results" className="menu">
-                <a href="/"><button>Home</button></a><br></br>
-                <a href="/login"><button >Login</button></a><br></br>
-                <a href="/signup"> <button>Sign Up</button></a><br></br>
-                <a href="/profile"><button>Profile</button></a><br></br>
-                <a href="/"><button> Log Out</button></a><br></br>
+                <a href="/"><button class="menuButton">Home</button></a><br></br>
+                <a href="/login"><button class="menuButton">Login</button></a><br></br>
+                <a href="/signup"> <button class="menuButton">Sign Up</button></a><br></br>
+                <a href="/profile"><button class="menuButton">Profile</button></a><br></br>
+                <a href="/"><button class="menuButton"> Log Out</button></a><br></br>
             </div>
         )
 
