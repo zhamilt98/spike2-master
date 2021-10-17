@@ -16,7 +16,7 @@ static_pages.use(mystatic(__dirname + "/react-app/build"));
 app.use(mount("/", static_pages));
 
 // app.use(mystatic('./react-app/build'));
-const router = require('./router/router');
+const router = require('./controller/router');
 app.use(router.routes());
 
 app.use(async (ctx, next) => {
