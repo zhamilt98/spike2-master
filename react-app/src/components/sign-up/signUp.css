@@ -1,6 +1,6 @@
 
   
-  input[type=text] {
+  .signUpinput {
       width: 100%;
       text-align: center;
       margin-left: auto;
@@ -9,7 +9,7 @@
 
   }
 
-  form {
+  .signUpform {
     text-align: center;
     position: fixed;
     top: 50%;
@@ -17,13 +17,11 @@
     transform: translate(-50%, -50%);
     display: grid;
     grid-template-rows: 1fr .5fr .5fr .5fr .5fr .5fr .5fr .75fr;
-
+  
+    
   }
-  button:hover{
-    background-color: white;
-    color:black;
-  }
- button{
+  
+ .signUpbutton{
     background-color: black;
     color:white;
     margin: 5px;

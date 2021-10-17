@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import React, { Component } from 'react';
 import SearchBar from './components/search-bar/searchBar';
-import loginPage from './components/login-page/login-page';
+import loginPage from './components/login-page/loginPage';
 import hamburger from './components/commonComponents/hamburger';
 import signUp from './components/sign-up/signUp'
 

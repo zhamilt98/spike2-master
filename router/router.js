@@ -47,4 +47,22 @@ router.get('/(.*)', async (ctx, next) => {
 	}
 });
 
+router.post('/api/signup', async (ctx, next) => {
+	try {
+		console.log('made post');
+	} catch(err) {
+		console.log('error in signup');
+		return next();
+	}
+});
+
+router.post('/api/login', async (ctx, next) => {
+	try {
+		console.log(ctx);
+	} catch(err) {
+		console.log('error in login');
+		return next();
+	}
+});
+
 module.exports = router;
