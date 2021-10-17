@@ -33,6 +33,11 @@ router.get('/fetchAll', async (ctx, next) => {
 	}
 });
 
+router.post('/search', async (ctx, next) => {
+	ctx.body = 200;
+	console.log('made post');
+});
+
 router.get('/(.*)', async (ctx, next) => {
 	try {
 		await send(ctx, './react-app/build/index.html');
