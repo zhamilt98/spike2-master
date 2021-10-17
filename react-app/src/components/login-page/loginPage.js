@@ -1,19 +1,42 @@
 import React from 'react';
 import './loginPage.css'
 import Form from 'react-bootstrap/Form';
-class loginPage extends React.Component {
+var mysql = require('mysql2');
+class LoginPage extends React.Component {
+  constructor(params){
+    super(params)
+    this.db= mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "Zboy1301",
+      database: "ssdi_db"
+    });
+    this.handleSubmitEvent = this.handleSubmitEvent.bind(this);
+}
+
+  handleSubmitEvent( un,pw ) {
+    this.db.query(`select * from users where username='${un}';`,function (err, result) {
+     if(err){}
+     else if(result !== null){
+       if(result.password===pw){
+         console.log("login")
+       }
+     }
+    })
+}
+
   render() {
     return (
           <form>
             <h3>Log in</h3>
            
                 <label>Username</label>
-                <input type="text" placeholder="Enter username" />
+                <input name="un" type="text" placeholder="Enter username" />
  
                 <label>Password</label>
-                <input type="text" placeholder="Enter password" />
+                <input name="pw" type="text" placeholder="Enter password" />
 
-            <button type="submit">Sign in</button> 
+            <button type="submit" onClick={this.handleSubmitEvent(document.getElementsByName("un").values,document.getElementsByName("pw").values)}>Sign in</button> 
             <button type="submit">Sign Up</button> 
             </form>
       
@@ -22,4 +45,4 @@ class loginPage extends React.Component {
        
 }
 
-export default loginPage;
+export default LoginPage;
