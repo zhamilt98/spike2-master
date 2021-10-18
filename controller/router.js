@@ -1,7 +1,7 @@
 'use strict';
 const router = require('koa-router')();
 const send = require('koa-send');
-
+const bodyParser = require('koa-body')();
 const db = require('../db');
 const myDb = new db();
 
@@ -49,18 +49,32 @@ router.get('/(.*)', async (ctx, next) => {
 	}
 });
 
-router.post('/api/signup', async (ctx, next) => {
+router.post('/api/signup', bodyParser, async (ctx, next) => {
 	try {
+		console.log('0');
+		ctx.response.redirect('/');
+		const signuphandler = require("../routes/signUpRouter"); 
+		console.log('1');
+		const thing = await signuphandler(ctx);
+		console.log('2');
+		ctx.body = thing;
 		console.log('made post');
+		
 	} catch(err) {
-		console.log('error in signup');
+		console.log(err.stack);
 		return next();
+	
 	}
+	
 });
 
-router.post('/api/login', async (ctx, next) => {
+router.post('/api/login', bodyParser, async (ctx, next) => {
 	try {
-		console.log(ctx);
+		ctx.response.redirect('/');
+		const loginhandler = require("../routes/loginRouter");
+		const thing = await loginhandler(ctx);
+		console.log('2');
+		ctx.body = thing;
 	} catch(err) {
 		console.log('error in login');
 		return next();

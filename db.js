@@ -8,17 +8,35 @@ class Db {
 
   createDb() {
     var con = mysql.createConnection({
-      host     : 'localhost',
-      user     : 'root',
-      password : 'password', // password 
-      database : 'mydb' // mydb
+      host: "localhost",
+      user: "root",
+      password: "mypassword",
+      database: "mydb"
     });
     
     con.connect(function(err) {
       if (err) throw err;
       console.log("Connected!");
     
-      
+      con.query(`DROP TABLE IF EXISTS myTable`, function (err, result) {
+        if (err) throw err;
+        console.log("Table dropped");
+      });
+
+      con.query("CREATE TABLE myTable ( Name varchar(45), Age int )", function (err, result) {
+        if (err) throw err;
+        console.log("Table created");
+      });
+    
+      con.query(`INSERT INTO myTable VALUES ( 'Kaleb', 23 )`, function (err, result) {
+        if (err) throw err;
+        console.log("First row added");
+      });
+    
+      con.query(`INSERT INTO myTable VALUES ( 'Chelsea', 22 )`, function (err, result) {
+        if (err) throw err;
+        console.log("Second row added");
+      }); 
     });
   }
   
@@ -27,7 +45,7 @@ class Db {
     var con = mysql.createConnection({
       host     : 'localhost',
       user     : 'root',
-      password : 'password', // password
+      password : 'mypassword', // password
       database : 'mydb' // mydb
     });
 
@@ -45,7 +63,7 @@ class Db {
     var con = mysql.createConnection({
       host: "localhost",
       user: "root",
-      password: "password",
+      password: "mypassword",
       database: "mydb"
     });
     
@@ -64,6 +82,59 @@ class Db {
       });
     });
   }
+  refreshLoginDd(){
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "mypassword",
+      database: "mydb"
+    });
+    
+    con.connect(function(err) {
+      if (err) throw err;
+      console.log("Connected!");
+    
+      con.query(`DROP TABLE IF EXISTS myTable2`, function (err, result) {
+        if (err) throw err;
+        console.log("Table dropped");
+      });
+
+      con.query("CREATE TABLE myTable2 ( Name varchar(45), Password varchar(45) )", function (err, result) {
+        if (err) throw err;
+        console.log("Table created");
+      });
+    });
+  }
+  enterUnamePass(uname, pass){
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "mypassword",
+      database: "mydb"
+    });
+    return new Promise( function( resolve, reject ){
+      con.query(`INSERT INTO myTable2 VALUES ( '${uname}',  '${pass}' )`, function (err, result) {
+        if (err) throw err;
+          console.log("3rd row added");
+      });
+    });
+  }
+  returnAcc(uname){
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "mypassword",
+      database: "mydb"
+    });
+    return new Promise( function( resolve, reject ){
+      con.query(`select Password from myTable2 where Name='${uname}' )`, function (err, result) {
+        if (err) throw err;
+          console.log("user in");
+      });
+    });
+  }
 }
+
+
 
 module.exports = Db;
