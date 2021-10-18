@@ -19,15 +19,15 @@ class App extends Component {
     this.state = { isLoded: false, dbRes: null };
   }
   componentDidMount() {
-   fetch('/fetchAll', { agent: httpsAgent })
-    .then(res => res.json())
-    .then(result => {
-      this.setState({
-        isLoaded: true,
-        dbRes: result
-       });
-     });
-    //this.setState( { isLoaded: true, dbRes: [] } );
+  //  fetch('/fetchAll', { agent: httpsAgent })
+  //   .then(res => res.json())
+  //   .then(result => {
+  //     this.setState({
+  //       isLoaded: true,
+  //       dbRes: result
+  //      });
+  //    });
+    this.setState( { isLoaded: true, dbRes: [] } );
   }
   
   render() {
