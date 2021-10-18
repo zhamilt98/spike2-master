@@ -7,7 +7,7 @@ const myDb = new db();
 
 // router.get('/login', async (ctx, next) => {
 // 	try {
-// 		await send(ctx, './react-app/build/login.html');
+// 		await send(ctx, './react-app/build/index.html');
 // 	} catch(err) {
 // 		console.log('error in / route');
 // 		return next();
@@ -52,7 +52,6 @@ router.get('/(.*)', async (ctx, next) => {
 router.post('/api/signup', bodyParser, async (ctx, next) => {
 	try {
 		console.log('0');
-		ctx.response.redirect('/');
 		const signuphandler = require("../routes/signUpRouter"); 
 		console.log('1');
 		const thing = await signuphandler(ctx);
@@ -67,18 +66,21 @@ router.post('/api/signup', bodyParser, async (ctx, next) => {
 	}
 	
 });
+router.redirect('/api/signup', 'login');
 
 router.post('/api/login', bodyParser, async (ctx, next) => {
 	try {
 		ctx.response.redirect('/');
 		const loginhandler = require("../routes/loginRouter");
-		const thing = await loginhandler(ctx);
+		const thing = loginhandler(ctx);
 		console.log('2');
 		ctx.body = thing;
 	} catch(err) {
 		console.log('error in login');
+		console.log(err);
 		return next();
 	}
 });
+router.redirect('/api/login', '/');
 
 module.exports = router;

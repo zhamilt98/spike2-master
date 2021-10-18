@@ -30,8 +30,8 @@ class SignUp extends React.Component {
       };
       
       axios.post('api/signup', detail).then( (res) => {
-        this.props.history.push('/'); 
-        });
+        this.props.history.push('/login'); 
+      });
       
     }
   }
