@@ -33,11 +33,26 @@ router.get('/fetchAll', async (ctx, next) => {
 	}
 });
 
-router.get('/search', async (ctx, next) => {
+router.get('/api/search', async (ctx, next) => {
 	const search_route = require('../routes/search-route');
+	ctx.session.test = 'test123';
 
 	ctx.body = await search_route(ctx);
 	console.log('made post');
+});
+
+router.get('/api/isLoggedIn', async (ctx, next) => {
+	if ( ctx.session.userId ) {
+		ctx.body = { isLoggedIn: true };
+	} else {
+		ctx.body = { isLoggedIn: false };
+	}
+});
+
+router.get('/api/like', async (ctx, next) => {
+	const like_route = require('../routes/like-route');
+
+	ctx.body = await like_route(ctx);
 });
 
 router.get('/(.*)', async (ctx, next) => {

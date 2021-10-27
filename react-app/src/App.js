@@ -1,17 +1,19 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import React, { Component } from 'react';
 import SearchBar from './components/search-bar/searchBar';
 import LoginPage from './components/login-page/loginPage';
+import LikesPage from './components/liked-recipe-page/liked-recipe-page';
 
 import SignUp from './components/sign-up/signUp';
 import Profile from './components/profile/profile';
 import Hamburger from './components/commonComponents/hamburger';
 
-const https = require('https');
-const httpsAgent = new https.Agent({ rejectUnauthorized: false });
+// const https = require('https');
+// const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 
 class App extends Component {
   constructor(params){
@@ -31,7 +33,7 @@ class App extends Component {
   }
   
   render() {
-    const { dbRes } = this.state;
+    // const { dbRes } = this.state;
     const { isLoaded } = this.state;
     if ( isLoaded ){
       return (
@@ -44,6 +46,7 @@ class App extends Component {
             <Route path="/hamburger" exact component={Hamburger} />
             <Route path="/signup" exact component={SignUp} />
             <Route path="/profile" exact component={Profile} />
+            <Route path="/likedRecipes" exact component={LikesPage} />
 
           </Router>
         </div>

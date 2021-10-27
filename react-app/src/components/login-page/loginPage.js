@@ -1,6 +1,5 @@
 import React from 'react';
-import './loginPage.css'
-import {withRouter} from 'react-router-dom';
+import './loginPage.css';
 const axios = require('axios').default;
 class LoginPage extends React.Component {
   constructor(params){

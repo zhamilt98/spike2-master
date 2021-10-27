@@ -17,7 +17,7 @@ function GroceryList(props) {
 }
 class SearchBar extends React.Component {
     constructor(params){
-        super(params)
+        super(params);
         this.state = { isLoaded: true, value: '', groceries: [], dbRes: [] };
         this.handleTextEvent = this.handleTextEvent.bind(this);
         this.handleSubmitEvent = this.handleSubmitEvent.bind(this);
@@ -47,7 +47,7 @@ class SearchBar extends React.Component {
     async handleSearch( event ) {
         const groceryList = this.state.groceries;
         event.preventDefault();
-        this.setState( { isLoaded: false, value: 'test search', groceries: [], dbRes: [] } );
+        this.setState( { isLoaded: false, value: '', groceries: [], dbRes: [] } );
         await this.getRecipes( groceryList );
     }
 
@@ -57,12 +57,12 @@ class SearchBar extends React.Component {
         const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 
 
-        await fetch(`/search?list=${JSON.stringify( ingredients )}`, { agent: httpsAgent })
+        await fetch(`/api/search?list=${JSON.stringify( ingredients )}`, { agent: httpsAgent })
         .then(res => res.json())
         .then(result => {
             resp = result; 
         });
-        this.setState( { isLoaded: true, value: 'test search', groceries: [], dbRes: resp } );
+        this.setState( { isLoaded: true, value: '', groceries: [], dbRes: resp } );
     }
 
     render() {

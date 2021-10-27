@@ -18,6 +18,7 @@ async function loginLogic(ctx){
         const res = await myDb.returnAcc(body.username, body.password);
         if ( res.length > 0 ) {
             console.log(JSON.stringify(res));
+            ctx.session.userId = res.id;
             console.log('loggedin');
         }
    } catch ( err ) {
