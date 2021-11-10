@@ -51,6 +51,16 @@ class Db {
         console.log("Table2 created");
       });
 
+      component.con.query(`DROP TABLE IF EXISTS myTable3`, function (err, result) {
+        if (err) throw err;
+        console.log("Table dropped");
+      });
+
+      component.con.query("CREATE TABLE myTable3 ( id varchar(45), image varchar(255), title varchar(255) )", function (err, result) {
+        if (err) throw err;
+        console.log("Table2 created");
+      });
+
     });
   }
   
@@ -120,6 +130,32 @@ class Db {
       component.con.query(query, function (err, result) {
         if (err) reject();
         console.log("got queryAll");
+        console.log(JSON.stringify(result));
+        resolve( result );
+      });
+    } );
+  }
+
+  likeRecipe( id, raw ) {
+    const recipe = JSON.parse( raw );
+    console.log(`id: ${JSON.stringify(id)}`);
+    console.log(`recipe: ${JSON.stringify(recipe)}`);
+    const component = this;
+    return new Promise( function( resolve, reject ){
+      component.con.query(`INSERT INTO myTable3 VALUES ( '${id}', '${recipe.image}', '${recipe.title}' )`, function (err, result) {
+        if (err) reject();
+        resolve( 200 );
+      });
+    });
+  }
+
+  getLikes( id ) {
+    const component = this;
+    return new Promise( function( resolve, reject ){
+      const query = `SELECT * FROM myTable3 WHERE id='${id}'`;
+      component.con.query(query, function (err, result) {
+        if (err) reject();
+        console.log("got likes");
         console.log(JSON.stringify(result));
         resolve( `${JSON.stringify(result)}` );
       });

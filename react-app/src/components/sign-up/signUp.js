@@ -1,6 +1,5 @@
 import React from 'react';
 import './signUp.css';
-import {withRouter} from 'react-router-dom';
 const axios = require('axios').default;
 class SignUp extends React.Component {
   constructor(params){

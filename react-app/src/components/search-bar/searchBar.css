@@ -11,7 +11,8 @@
 }
 
 .search_container {
-    margin-top: 45vh;
+    position: relative;
+    top: 45vh;
     min-height: 50vh;
     min-width: 80vw;
     text-align: center;
