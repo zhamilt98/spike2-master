@@ -31,6 +31,11 @@ class App extends Component {
   //    });
     this.setState( { isLoaded: true, dbRes: [] } );
   }
+
+  myHandler() {
+    const event = new Event('close-hamburger', { detail: { test: 'test' } } );
+    document.body.dispatchEvent( event );
+  }
   
   render() {
     // const { dbRes } = this.state;
@@ -38,17 +43,18 @@ class App extends Component {
     if ( isLoaded ){
       return (
         <div>
-
           <Hamburger />
-          <Router>
-            <Route path="/" exact component={SearchBar} />
-            <Route path="/login" exact component={LoginPage} />
-            <Route path="/hamburger" exact component={Hamburger} />
-            <Route path="/signup" exact component={SignUp} />
-            <Route path="/profile" exact component={Profile} />
-            <Route path="/likedRecipes" exact component={LikesPage} />
-
-          </Router>
+          <div onClick={this.myHandler} style={{ minHeight: '100vh', minWidth: '75vw' }}>
+            <Router>
+              <Route path="/" exact component={SearchBar} />
+              <Route path="/login" exact component={LoginPage} />
+              <Route path="/logout" exact component={SearchBar} />
+              <Route path="/hamburger" exact component={Hamburger} />
+              <Route path="/signup" exact component={SignUp} />
+              <Route path="/profile" exact component={Profile} />
+              <Route path="/likedRecipes" exact component={LikesPage} />
+            </Router>
+          </div>
         </div>
         
 

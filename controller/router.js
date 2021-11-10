@@ -35,37 +35,50 @@ router.get('/fetchAll', async (ctx, next) => {
 
 router.get('/api/search', async (ctx, next) => {
 	const search_route = require('../routes/search-route');
-	ctx.session.test = 'test123';
+	// ctx.session.test = 'test123';
 
 	ctx.body = await search_route(ctx);
 	console.log('made post');
 });
 
 router.get('/api/isLoggedIn', async (ctx, next) => {
-	if ( ctx.session.userId ) {
-		ctx.body = { isLoggedIn: true };
-	} else {
-		ctx.body = { isLoggedIn: false };
-	}
+	ctx.body = { isLoggedIn: ctx.session.isLoggedIn || false };
+	next();
 });
 
 router.get('/api/like', async (ctx, next) => {
+	console.log('inside the api/like');
 	const like_route = require('../routes/like-route');
 
 	ctx.body = await like_route(ctx);
 });
+
+router.get('/api/getLikes', async (ctx, next) => {
+	console.log('inside the api/like');
+	const get_like_route = require('../routes/get-like-route');
+
+	ctx.body = await get_like_route(ctx);
+});
+
+router.get('/api/logout', async (ctx, next) => {
+	ctx.session.userId = undefined;
+	ctx.session.isLoggedIn = false;
+	console.log(`sess: ${JSON.stringify(ctx.session)}`);
+	next();
+});
+
 
 router.get('/(.*)', async (ctx, next) => {
 	try {
 		await send(ctx, './react-app/build/index.html');
 	} catch(err) {
 		console.log('error in / route');
-		return next();
+		next();
 	}
 });
 
 router.post('/api/signup', bodyParser, async (ctx, next) => {
-	try {
+	try { 
 		console.log('0');
 		const signuphandler = require("../routes/signUpRouter"); 
 		console.log('1');
@@ -76,8 +89,7 @@ router.post('/api/signup', bodyParser, async (ctx, next) => {
 		
 	} catch(err) {
 		console.log(err.stack);
-		return next();
-	
+		next();
 	}
 	
 });
@@ -87,9 +99,15 @@ router.post('/api/login', bodyParser, async (ctx, next) => {
 	try {
 		ctx.response.redirect('/');
 		const loginhandler = require("../routes/loginRouter");
-		const thing = loginhandler(ctx);
+		const thing = await loginhandler(ctx);
 		console.log('2');
-		ctx.body = thing;
+		console.log(` thing: ${JSON.stringify(thing)}`);
+		if ( thing !== '' ) {
+			ctx.session.isLoggedIn = true;
+			ctx.session.userId = thing;
+		}
+		console.log(`session in router post api/login/ : ${JSON.stringify(ctx.session)}`);
+		return next();
 	} catch(err) {
 		console.log('error in login');
 		console.log(err);

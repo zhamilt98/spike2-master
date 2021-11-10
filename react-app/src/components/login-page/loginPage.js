@@ -15,7 +15,9 @@ class LoginPage extends React.Component {
   handleTextEvent2( event ) {
   this.setState({pass: event.target.value});
   }
+
   async handleSearch( event ) {
+    const component = this;
     event.preventDefault();
     
     const detail = {
@@ -23,7 +25,7 @@ class LoginPage extends React.Component {
       password: this.state.pass
     }
     axios.post('api/login', detail).then( (res) => {
-      this.props.history.push('/'); 
+      component.props.history.push('/'); 
       console.log(res);
     });
     

@@ -18,6 +18,20 @@ class RecipeList extends React.Component {
         this.onLikeClick = this.onLikeClick.bind(this);
     }
 
+    componentDidMount() {
+        const component = this;
+        const https = require('https');
+        const httpsAgent = new https.Agent({ rejectUnauthorized: false });
+        fetch('/api/isLoggedIn', { agent: httpsAgent })
+            .then(res => res.json())
+            .then(result => {
+                component.setState({
+                    isLoaded: true,
+                    isLoggedIn: result.isLoggedIn,
+                });
+            });
+    }
+
     async likeRecipe( item ) {
         let resp;
         const https = require('https');
@@ -45,7 +59,7 @@ class RecipeList extends React.Component {
                         <Card style={{ width: '18rem', margin: 'auto' }}>
                             <Card.Img variant="top" src={item.image} />
                             <Card.Body>
-                                <div className="likeButtonClass" onClick={ async () => { await this.onLikeClick( item ) }}>
+                                <div style={{display: this.state.isLoggedIn ? 'block' : 'none' }} className="likeButtonClass" onClick={ async () => { await this.onLikeClick( item ) }}>
                                     <svg id="liked" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
                                     </svg>
