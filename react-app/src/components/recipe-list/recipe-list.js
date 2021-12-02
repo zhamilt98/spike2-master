@@ -38,7 +38,7 @@ class RecipeList extends React.Component {
         const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 
         await fetch(`/api/like?recipe=${JSON.stringify( item )}`, { agent: httpsAgent })
-        .then(res => res.json())
+        // .then(res => res.json())
         .then(result => {
             resp = result; 
         });

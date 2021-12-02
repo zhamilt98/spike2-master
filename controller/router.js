@@ -42,6 +42,7 @@ router.get('/api/search', async (ctx, next) => {
 });
 
 router.get('/api/isLoggedIn', async (ctx, next) => {
+	console.log('isLoggedIn called!');
 	ctx.body = { isLoggedIn: ctx.session.isLoggedIn || false };
 	next();
 });
@@ -64,6 +65,7 @@ router.get('/api/logout', async (ctx, next) => {
 	ctx.session.userId = undefined;
 	ctx.session.isLoggedIn = false;
 	console.log(`sess: ${JSON.stringify(ctx.session)}`);
+	ctx.body = 200;
 	next();
 });
 
