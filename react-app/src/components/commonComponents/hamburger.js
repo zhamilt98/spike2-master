@@ -69,9 +69,9 @@ class Hamburger extends React.Component {
                 <div>
                     <label for="check" id="toggle" onClick={component.onClick}>
                         <input type="checkbox" id="check" />
-                        <span class="line"></span>
-                        <span class="line"></span>
-                        <span class="line"></span>
+                        <span className="line"></span>
+                        <span className="line"></span>
+                        <span className="line"></span>
                     </label>
                     {this.state.showResults ? <Menu /> : null}
                 </div>
