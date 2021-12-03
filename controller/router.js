@@ -54,6 +54,20 @@ router.get('/api/like', async (ctx, next) => {
 	ctx.body = await like_route(ctx);
 });
 
+router.get('/api/unlike', async (ctx, next) => {
+	console.log('inside the api/unlike');
+	const unlike_route = require('../routes/unlike-route');
+
+	ctx.body = await unlike_route(ctx);
+});
+
+router.get('/api/info', async (ctx, next) => {
+	console.log('inside the api/info');
+	const info_route = require('../routes/info-route');
+
+	ctx.body = await info_route(ctx);
+});
+
 router.get('/api/getLikes', async (ctx, next) => {
 	console.log('inside the api/like');
 	const get_like_route = require('../routes/get-like-route');

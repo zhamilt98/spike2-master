@@ -3,6 +3,7 @@ function likeRecipe( ctx ) {
     const myEntry = {
         image: recipe.image,
         title: recipe.title,
+        recipeId: recipe.id,
     };
     console.log(`recipe ${JSON.stringify(recipe)}`);
     console.log(`session info? :${JSON.stringify(ctx.session)}`);
