@@ -1,8 +1,8 @@
-function unlikeRecipe( ctx ) {
+function unlikeRecipe( ctx, myDb ) {
     const title = ctx.request.query.title;
 
-    const db = require('../db');
-    const myDb = new db(false);
+    // const db = require('../db');
+    // const myDb = new db(false);
 
     try {
         myDb.unlikeRecipe( ctx.session.userId, title );
