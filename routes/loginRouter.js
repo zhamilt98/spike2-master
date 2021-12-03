@@ -1,8 +1,8 @@
-async function loginLogic(ctx){
+async function loginLogic(ctx, myDb){
     //const results = await myDb.queryAll();
     const body = ctx.request.body; 
-    const db = require('../db');
-    const myDb = new db(false);
+    // const db = require('../db');
+    // const myDb = new db(false);
     //await myDb.refreshLoginDd()
 //     console.log(body.username)
 //    if( body.pass === myDb.returnAcc(body.username, body.pass)){

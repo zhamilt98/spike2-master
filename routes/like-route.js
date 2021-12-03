@@ -1,4 +1,4 @@
-function likeRecipe( ctx ) {
+function likeRecipe( ctx, myDb ) {
     const recipe = JSON.parse(ctx.request.query.recipe);
     const myEntry = {
         image: recipe.image,
@@ -8,8 +8,8 @@ function likeRecipe( ctx ) {
     console.log(`recipe ${JSON.stringify(recipe)}`);
     console.log(`session info? :${JSON.stringify(ctx.session)}`);
 
-    const db = require('../db');
-    const myDb = new db(false);
+    // const db = require('../db');
+    // const myDb = new db(false);
 
     try {
         myDb.likeRecipe( ctx.session.userId, JSON.stringify(myEntry) );

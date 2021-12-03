@@ -51,14 +51,14 @@ router.get('/api/like', async (ctx, next) => {
 	console.log('inside the api/like');
 	const like_route = require('../routes/like-route');
 
-	ctx.body = await like_route(ctx);
+	ctx.body = await like_route(ctx, myDb);
 });
 
 router.get('/api/unlike', async (ctx, next) => {
 	console.log('inside the api/unlike');
 	const unlike_route = require('../routes/unlike-route');
 
-	ctx.body = await unlike_route(ctx);
+	ctx.body = await unlike_route(ctx, myDb);
 });
 
 router.get('/api/info', async (ctx, next) => {
@@ -72,7 +72,7 @@ router.get('/api/getLikes', async (ctx, next) => {
 	console.log('inside the api/like');
 	const get_like_route = require('../routes/get-like-route');
 
-	ctx.body = await get_like_route(ctx);
+	ctx.body = await get_like_route(ctx, myDb);
 });
 
 router.get('/api/logout', async (ctx, next) => {
@@ -98,7 +98,7 @@ router.post('/api/signup', bodyParser, async (ctx, next) => {
 		console.log('0');
 		const signuphandler = require("../routes/signUpRouter"); 
 		console.log('1');
-		const thing = await signuphandler(ctx);
+		const thing = await signuphandler(ctx, myDb);
 		console.log('2');
 		ctx.body = thing;
 		console.log('made post');
@@ -115,7 +115,7 @@ router.post('/api/login', bodyParser, async (ctx, next) => {
 	try {
 		ctx.response.redirect('/');
 		const loginhandler = require("../routes/loginRouter");
-		const thing = await loginhandler(ctx);
+		const thing = await loginhandler(ctx, myDb);
 		console.log('2');
 		console.log(` thing: ${JSON.stringify(thing)}`);
 		if ( thing !== '' ) {

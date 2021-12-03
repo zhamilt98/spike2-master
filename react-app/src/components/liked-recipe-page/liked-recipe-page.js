@@ -122,7 +122,7 @@ class LikesPage extends React.Component {
                         </Container>
                     </div>
                     { this.state.infoItem && this.state.showPopUp ? <div className='popUp'>
-                        <Card style={{ width: '25rem', margin: 'auto' }}>
+                        <Card style={{ width: '50rem', margin: 'auto', position: 'absolute', top: '45vh', left: '45vw' }}>
                             <Card.Img variant="top" src={this.state.infoItem.image} />
                             <Card.Body>
                                 <div className="likeButtonClass" onClick={this.closePopUp} style={{ textAlign: 'center' }}>
