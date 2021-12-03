@@ -7,25 +7,19 @@ class Hamburger extends React.Component {
         this.state = { showResults: false };
         this.onClick = this.onClick.bind(this);
         this.myHandler = this.myHandler.bind(this);
-        this.logoutHandler = this.logoutHandler(this);
+        this.logoutHandler = this.logoutHandler.bind(this);
+        this.checkLogin = this.checkLogin.bind(this);
     }
 
     componentDidMount() {
         document.body.addEventListener('close-hamburger', this.myHandler);
-        // const https = require('https');
-        // const httpsAgent = new https.Agent({ rejectUnauthorized: false });
-        // fetch('/api/isLoggedIn', { agent: httpsAgent })
-        //     .then(res => res.json())
-        //     .then(result => {
-        //         console.log(` on mount: ${JSON.stringify(result)}`);
-        //         this.setState({
-        //             isLoaded: true,
-        //             isLoggedIn: result.isLoggedIn,
-        //         });
-        //     });
+        document.body.addEventListener('hamburger-login', this.loginHandler);
+        this.checkLogin();
     }
 
     onClick( ) {
+        const component = this;
+        component.checkLogin();
         this.setState( { showResults: !this.state.showResults } );
         this.forceUpdate();
     }
@@ -49,6 +43,21 @@ class Hamburger extends React.Component {
             });
     }
 
+    checkLogin(){
+        console.log('updating state of hambuger');
+        const https = require('https');
+        const httpsAgent = new https.Agent({ rejectUnauthorized: false });
+        fetch('/api/isLoggedIn', { agent: httpsAgent })
+            .then(res => res.json())
+            .then(result => {
+                console.log(` on mount: ${JSON.stringify(result)}`);
+                this.setState({
+                    isLoaded: true,
+                    isLoggedIn: result.isLoggedIn,
+                });
+            });
+    }
+
     render() {
         const component = this;
         // return <h1>Hello, {this.props.name}</h1>;
@@ -60,25 +69,25 @@ class Hamburger extends React.Component {
                 <div>
                     <label for="check" id="toggle" onClick={component.onClick}>
                         <input type="checkbox" id="check" />
-                        <span class="line"></span>
-                        <span class="line"></span>
-                        <span class="line"></span>
+                        <span className="line"></span>
+                        <span className="line"></span>
+                        <span className="line"></span>
                     </label>
                     {this.state.showResults ? <Menu /> : null}
                 </div>
             );
-        }
+        };
 
-        const Menu = () => (
+        const Menu = () => { return (
             <div id="results" className="menu">
                 <a href="/"><button class="menuButton">Home</button></a><br></br>
-                <a href="/login"><button class="menuButton">Login</button></a><br></br>
-                <a href="/signup"> <button class="menuButton">Sign Up</button></a><br></br>
-                <a href="/profile"><button class="menuButton">Profile</button></a><br></br>
-                <button class="menuButton" onClick={this.logoutHandler}> Log Out</button><br></br>
-                <a href="/likedRecipes"><button class="menuButton">Likes</button></a><br></br>
+                { !this.state.isLoggedIn ? <div><a href="/login"><button class="menuButton">Login</button></a><br></br></div> : null }
+                { !this.state.isLoggedIn ? <div><a href="/signup"> <button class="menuButton">Sign Up</button></a><br></br></div> : null }
+                {/* { this.state.isLoggedin ? <div><a href="/profile"><button class="menuButton">Profile</button></a><br></br></div> : null } */}
+                { this.state.isLoggedIn ? <div><button class="menuButton" onClick={this.logoutHandler}> Log Out</button><br></br></div> : null }    
+                { this.state.isLoggedIn ? <div><a href="/likedRecipes"><button class="menuButton">Likes</button></a><br></br></div> : null }
             </div>
-        )
+        ); };
 
         return (
             <div style={{ maxWidth: '10vw', margin: 0, float: 'left' }}>

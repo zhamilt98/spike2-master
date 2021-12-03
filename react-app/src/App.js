@@ -17,7 +17,7 @@ import Hamburger from './components/commonComponents/hamburger';
 
 class App extends Component {
   constructor(params){
-    super(params)
+    super(params);
     this.state = { isLoded: false, dbRes: null };
   }
   componentDidMount() {

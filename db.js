@@ -56,7 +56,7 @@ class Db {
         console.log("Table dropped");
       });
 
-      component.con.query("CREATE TABLE myTable3 ( id varchar(45), image varchar(255), title varchar(255) )", function (err, result) {
+      component.con.query("CREATE TABLE myTable3 ( id varchar(45), image varchar(255), title varchar(255), recipeId varchar(255) )", function (err, result) {
         if (err) throw err;
         console.log("Table2 created");
       });
@@ -142,7 +142,21 @@ class Db {
     console.log(`recipe: ${JSON.stringify(recipe)}`);
     const component = this;
     return new Promise( function( resolve, reject ){
-      component.con.query(`INSERT INTO myTable3 VALUES ( '${id}', '${recipe.image}', '${recipe.title}' )`, function (err, result) {
+      component.con.query(`INSERT INTO myTable3 VALUES ( '${id}', '${recipe.image}', '${recipe.title}', '${recipe.recipeId}' )`, function (err, result) {
+        if (err) reject();
+        resolve( 200 );
+      });
+    });
+  }
+
+  unlikeRecipe( id, title ) {
+    console.log('deleting item');
+    console.log(`id: ${id}`);
+    console.log(`title: ${title}`);
+    const component = this;
+    return new Promise( function( resolve, reject ){
+      component.con.query(`DELETE FROM myTable3 WHERE id='${id}' AND title='${title}'`, function (err, result) {
+        console.log(`res: ${JSON.stringify(result)}`);
         if (err) reject();
         resolve( 200 );
       });

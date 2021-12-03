@@ -42,6 +42,7 @@ router.get('/api/search', async (ctx, next) => {
 });
 
 router.get('/api/isLoggedIn', async (ctx, next) => {
+	console.log('isLoggedIn called!');
 	ctx.body = { isLoggedIn: ctx.session.isLoggedIn || false };
 	next();
 });
@@ -51,6 +52,20 @@ router.get('/api/like', async (ctx, next) => {
 	const like_route = require('../routes/like-route');
 
 	ctx.body = await like_route(ctx);
+});
+
+router.get('/api/unlike', async (ctx, next) => {
+	console.log('inside the api/unlike');
+	const unlike_route = require('../routes/unlike-route');
+
+	ctx.body = await unlike_route(ctx);
+});
+
+router.get('/api/info', async (ctx, next) => {
+	console.log('inside the api/info');
+	const info_route = require('../routes/info-route');
+
+	ctx.body = await info_route(ctx);
 });
 
 router.get('/api/getLikes', async (ctx, next) => {
@@ -64,6 +79,7 @@ router.get('/api/logout', async (ctx, next) => {
 	ctx.session.userId = undefined;
 	ctx.session.isLoggedIn = false;
 	console.log(`sess: ${JSON.stringify(ctx.session)}`);
+	ctx.body = 200;
 	next();
 });
 
