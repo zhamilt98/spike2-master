@@ -26,14 +26,14 @@ class LoginPage extends React.Component {
     }
     axios.post('api/login', detail).then( (res) => {
       component.props.history.push('/'); 
-      console.log(res);
+      console.log(`res in api/login UI side: ${JSON.stringify(res.data)}`);
     });
     
   }
   render() {
     return (
       <div>
-          <form class="loginform" onSubmit={this.handleSearch}>
+          <form className="loginform" onSubmit={this.handleSearch}>
             <h3>Log in</h3>
            
                 <label>Username</label>
@@ -42,7 +42,7 @@ class LoginPage extends React.Component {
                 <label>Password</label>
                 <input type="text" placeholder="Enter password" className="logininput" id="password"  onChange={this.handleTextEvent2}/>
 
-            <button type="submit" class="loginbutton">Log in</button>
+            <button type="submit" className="loginbutton">Log in</button>
            
             </form>
         </div>

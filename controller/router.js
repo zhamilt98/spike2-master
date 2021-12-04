@@ -36,8 +36,8 @@ router.get('/fetchAll', async (ctx, next) => {
 router.get('/api/search', async (ctx, next) => {
 	const search_route = require('../routes/search-route');
 	// ctx.session.test = 'test123';
-
-	ctx.body = await search_route(ctx);
+	const axios = require('axios').default;
+	ctx.body = await search_route(ctx, axios);
 	console.log('made post');
 });
 
@@ -64,8 +64,9 @@ router.get('/api/unlike', async (ctx, next) => {
 router.get('/api/info', async (ctx, next) => {
 	console.log('inside the api/info');
 	const info_route = require('../routes/info-route');
+	const axios = require('axios').default;
 
-	ctx.body = await info_route(ctx);
+	ctx.body = await info_route(ctx, axios);
 });
 
 router.get('/api/getLikes', async (ctx, next) => {
@@ -118,9 +119,12 @@ router.post('/api/login', bodyParser, async (ctx, next) => {
 		const thing = await loginhandler(ctx, myDb);
 		console.log('2');
 		console.log(` thing: ${JSON.stringify(thing)}`);
-		if ( thing !== '' ) {
+		if ( thing.id !== '' ) {
 			ctx.session.isLoggedIn = true;
 			ctx.session.userId = thing;
+			ctx.body = { message: 200 };
+		} else {
+			ctx.body = { message: 500 };
 		}
 		console.log(`session in router post api/login/ : ${JSON.stringify(ctx.session)}`);
 		return next();

@@ -1,13 +1,13 @@
-const axios = require('axios').default;
+// const axios = require('axios').default;
 
-async function searchRecipes( ctx ) {
+async function searchRecipes( ctx, agent ) {
     const list = JSON.parse(ctx.request.query.list);
     const queryString = generateQueryString( list );
     console.log(`generated qs: ${queryString}`);
 
 
     try {
-        const response = await axios.get(`https://api.spoonacular.com/recipes/findByIngredients${queryString}`);
+        const response = await agent.get(`https://api.spoonacular.com/recipes/findByIngredients${queryString}`);
         // console.log(response);
         return response.data;
     } catch (error) {

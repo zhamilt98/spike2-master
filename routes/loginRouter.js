@@ -26,6 +26,7 @@ async function loginLogic(ctx, myDb){
             console.log(`res: ${JSON.stringify(res)}`);
             console.log(`ctx.session: ${JSON.stringify(ctx.session)}`);
             console.log('loggedin');
+            return res[0];
         }
    } catch ( err ) {
        console.log('error in login router');

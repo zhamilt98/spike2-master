@@ -13,8 +13,10 @@ function likeRecipe( ctx, myDb ) {
 
     try {
         myDb.likeRecipe( ctx.session.userId, JSON.stringify(myEntry) );
+        return 200;
     } catch ( err ) {
         console.log(`err: ${JSON.stringify(err)}`);
+        return 500;
     }
 }
 
