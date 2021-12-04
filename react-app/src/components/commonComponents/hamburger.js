@@ -67,7 +67,7 @@ class Hamburger extends React.Component {
             // const showResults = false;
             return (
                 <div>
-                    <label for="check" id="toggle" onClick={component.onClick}>
+                    <label id="toggle" onClick={component.onClick}>
                         <input type="checkbox" id="check" />
                         <span className="line"></span>
                         <span className="line"></span>
@@ -80,12 +80,12 @@ class Hamburger extends React.Component {
 
         const Menu = () => { return (
             <div id="results" className="menu">
-                <a href="/"><button class="menuButton">Home</button></a><br></br>
-                { !this.state.isLoggedIn ? <div><a href="/login"><button class="menuButton">Login</button></a><br></br></div> : null }
-                { !this.state.isLoggedIn ? <div><a href="/signup"> <button class="menuButton">Sign Up</button></a><br></br></div> : null }
+                <a href="/"><button className="menuButton">Home</button></a><br></br>
+                { !this.state.isLoggedIn ? <div><a href="/login"><button className="menuButton">Login</button></a><br></br></div> : null }
+                { !this.state.isLoggedIn ? <div><a href="/signup"> <button className="menuButton">Sign Up</button></a><br></br></div> : null }
                 {/* { this.state.isLoggedin ? <div><a href="/profile"><button class="menuButton">Profile</button></a><br></br></div> : null } */}
-                { this.state.isLoggedIn ? <div><button class="menuButton" onClick={this.logoutHandler}> Log Out</button><br></br></div> : null }    
-                { this.state.isLoggedIn ? <div><a href="/likedRecipes"><button class="menuButton">Likes</button></a><br></br></div> : null }
+                { this.state.isLoggedIn ? <div><button className="menuButton" onClick={this.logoutHandler}> Log Out</button><br></br></div> : null }    
+                { this.state.isLoggedIn ? <div><a href="/likedRecipes"><button className="menuButton">Likes</button></a><br></br></div> : null }
             </div>
         ); };
 

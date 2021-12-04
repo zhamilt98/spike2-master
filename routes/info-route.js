@@ -1,9 +1,8 @@
-async function getRecipeInfo( ctx ) {
-    const axios = require('axios').default;
+async function getRecipeInfo( ctx, agent ) {
     const recipeId = ctx.request.query.recipeId;
 
     try {
-        const response = await axios.get(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=9293ae6c24ec4c1c859941bb686c5c19`);
+        const response = await agent.get(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=9293ae6c24ec4c1c859941bb686c5c19`);
         // console.log(response);
         // const res = {
         //     image: response.data.image,

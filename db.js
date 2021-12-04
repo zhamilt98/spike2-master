@@ -119,7 +119,7 @@ class Db {
       component.con.query(`INSERT INTO myTable2 VALUES ( '${component.inc}', '${uname}',  '${pass}' )`, function (err, result) {
         if (err) reject();
         component.inc += 1;
-        resolve( `${JSON.stringify(result)}` );
+        resolve( 200 );
       });
     });
   }
